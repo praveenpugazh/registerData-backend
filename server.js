@@ -2,11 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import dataRoute from "./routes/dataRoute.js";
+import bodyParser from "body-parser";
 import cors from "cors";
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 const PORT = process.env.PORT || 6000;
 
