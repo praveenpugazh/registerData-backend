@@ -6,9 +6,9 @@ router.get("/", async (req, res) => {
   const data = await Users.find();
   res.json(data);
 });
+
 router.post("/", async (req, res) => {
   const { fullname, email, dob, picture, mobile, jobtype } = req.body;
-
   const user = new Users({
     fullname,
     email,
@@ -20,9 +20,9 @@ router.post("/", async (req, res) => {
   await user.save();
   res.json(user);
 });
+
 router.patch("/:id", async (req, res) => {
   const { fullname, email, dob, picture, mobile, jobtype } = req.body;
-
   const updateUser = {};
   if (fullname) updateUser.fullname = fullname;
   if (email) updateUser.email = email;
